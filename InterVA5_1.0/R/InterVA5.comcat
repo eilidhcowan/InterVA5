@@ -126,21 +126,21 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
     setwd(directory)
 
     if (is.null(sci)) {
-        data("probbaseV5", envir = environment())
-        probbaseV5 <- get("probbaseV5", envir = environment())
-        probbaseV5 <- as.matrix(probbaseV5)
-        probbaseV5Version <- probbaseV5[1,3]
+        data("probbaseV6", envir = environment())
+        probbaseV6 <- get("probbaseV5", envir = environment())
+        probbaseV6 <- as.matrix(probbaseV6)
+        probbaseV6Version <- probbaseV6[1,3]
     }
     if (!is.null(sci)) {
         validSCI <- TRUE
         if (!is.data.frame(sci) & !is.matrix(sci)) validSCI <- FALSE
-        if (nrow(sci) != 354) validSCI <- FALSE
-        if (ncol(sci) != 87) validSCI <- FALSE
+        if (nrow(sci) != 356) validSCI <- FALSE
+        if (ncol(sci) != 88) validSCI <- FALSE
         if (!validSCI) {
-            stop("error: invalid sci (must be data frame or matrix with 354 rows and 87 columns).")
+            stop("error: invalid sci (must be data frame or matrix with 356 rows and 88 columns).")
         }
         probbaseV5 <- as.matrix(sci)
-        probbaseV5Version <- probbaseV5[1,3]
+        probbaseV6Version <- probbaseV6[1,3]
     }
     message("Using Probbase version:  ", probbaseV5Version)
     data("causetextV5", envir = environment())
@@ -187,25 +187,25 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
             call. = FALSE, immediate. = TRUE)
         colnames(Input) <- valabels
     }
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "I"  ] <- 1
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "A+" ] <- 0.8
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "A"  ] <- 0.5
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "A-" ] <- 0.2
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "B+" ] <- 0.1
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "B"  ] <- 0.05
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "B-" ] <- 0.02
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "B -"] <- 0.02
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "C+" ] <- 0.01
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "C"  ] <- 0.005
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "C-" ] <- 0.002
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "D+" ] <- 0.001
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "D"  ] <- 5e-04
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "D-" ] <- 1e-04
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "E"  ] <- 1e-05
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == "N"  ] <- 0
-    probbaseV5[,18:ncol(probbaseV5)][probbaseV5[,18:ncol(probbaseV5)] == ""   ] <- 0
-    probbaseV5[1, 1:17] <- rep(0, 17)
-    Sys_Prior <- as.numeric(probbaseV5[1, ])
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "I"  ] <- 1
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "A+" ] <- 0.8
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "A"  ] <- 0.5
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "A-" ] <- 0.2
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "B+" ] <- 0.1
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "B"  ] <- 0.05
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "B-" ] <- 0.02
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "B -"] <- 0.02
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "C+" ] <- 0.01
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "C"  ] <- 0.005
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "C-" ] <- 0.002
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "D+" ] <- 0.001
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "D"  ] <- 5e-04
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "D-" ] <- 1e-04
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "E"  ] <- 1e-05
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == "N"  ] <- 0
+    probbaseV6[,18:ncol(probbaseV6)][probbaseV6[,18:ncol(probbaseV6)] == ""   ] <- 0
+    probbaseV6[1, 1:17] <- rep(0, 17)
+    Sys_Prior <- as.numeric(probbaseV6[1, ])
     D <- length(Sys_Prior)
     HIV <- tolower(HIV)
     Malaria <- tolower(Malaria)
@@ -236,7 +236,7 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
         header = c("ID", "MALPREV", "HIVPREV", "PREGSTAT", "PREGLIK", 
                    "CAUSE1", "LIK1", "CAUSE2", "LIK2", "CAUSE3", "LIK3", "INDET", "COMCAT", "COMNUM")
         if (output == "extended") 
-            header = c(header, as.character(causetextV5[, 2]))
+            header = c(header, as.character(causetextV6[, 2]))
         write.table(t(header), file = paste(filename, ".csv", sep = ""), row.names = FALSE, col.names = FALSE, sep = ",")
     }
     nd <- max(1, round(N/100))
@@ -327,19 +327,19 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
         for (jj in 1:length(temp)) {
             temp_sub <- temp[jj]
             for (j in 18:D) {
-                    prob[j - 17] <- prob[j - 17] * as.numeric(probbaseV5[temp_sub + 1, j])
+                    prob[j - 17] <- prob[j - 17] * as.numeric(probbaseV6[temp_sub + 1, j])
             }
             if (sum(prob[1:3]) > 0) 
                 prob[1:3] <- prob[1:3]/sum(prob[1:3])
             if (sum(prob[4:64]) > 0)
                 prob[4:64] <- prob[4:64]/sum(prob[4:64])
-            if (sum(prob[65:70]) > 0)
-                prob[65:70] <- prob[65:70]/sum(prob[65:70])
+            if (sum(prob[65:71]) > 0)
+                prob[65:71] <- prob[65:71]/sum(prob[65:71])
         }
         names(prob) <- causetextV5[, 2]
         prob_A <- prob[ 1: 3]
         prob_B <- prob[ 4:64]
-        prob_C <- prob[65:70]
+        prob_C <- prob[65:71]
 
         ## Determine Preg_State and Likelihood
         if (sum(prob_A) == 0 || reproductiveAge == 0) {
