@@ -126,8 +126,8 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
     setwd(directory)
 
     if (is.null(sci)) {
-        data("probbaseV6", envir = environment())
-        probbaseV6 <- get("probbaseV6", envir = environment())
+        data("probbaseV6_1", envir = environment())
+        probbaseV6 <- get("probbaseV6_1", envir = environment())
         probbaseV6 <- as.matrix(probbaseV6)
         probbaseV6Version <- probbaseV6[1,3]
     }
