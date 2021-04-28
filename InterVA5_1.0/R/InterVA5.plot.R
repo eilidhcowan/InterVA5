@@ -43,7 +43,7 @@ CSMF.interVA5 <- function(va) {
         causenames[68] == "Inevitable" &&
         causenames[69] == "Knowledge" &&
         causenames[70] == "Resources" &&
-	causenames[71] == "Referral"{
+	causenames[71] == "Referral"){
           causeindex <- causeindex[-c(1:3, 65:71)]
           causenames <- causenames[-c(1:3, 65:71)]
           include.probAC <- TRUE
