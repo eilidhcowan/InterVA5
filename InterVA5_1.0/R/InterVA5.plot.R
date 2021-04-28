@@ -42,9 +42,10 @@ CSMF.interVA5 <- function(va) {
         causenames[67] == "Health systems" &&
         causenames[68] == "Inevitable" &&
         causenames[69] == "Knowledge" &&
-        causenames[70] == "Resources") {
-          causeindex <- causeindex[-c(1:3, 65:70)]
-          causenames <- causenames[-c(1:3, 65:70)]
+        causenames[70] == "Resources" &&
+	causenames[71] == "Referral"{
+          causeindex <- causeindex[-c(1:3, 65:71)]
+          causenames <- causenames[-c(1:3, 65:71)]
           include.probAC <- TRUE
     }
 
@@ -126,7 +127,7 @@ COMCAT.interVA5 <- function(va){
    # for future compatibility with non-standard input
     for(i in 1:length(va)){
         if(!is.null(va[[i]]$wholeprob)){
-            causenames <- names(va[[i]]$wholeprob)[65:70]
+            causenames <- names(va[[i]]$wholeprob)[65:71]
             causeindex <- 65:70
             break
         }
@@ -143,7 +144,7 @@ COMCAT.interVA5 <- function(va){
     ## pick not simply the top 3 causes, but the top 3 causes reported by InterVA5
     for(i in 1:length(va)){
         if(is.null(va[[i]][15])) next
-        this.dist <- unlist(va[[i]][15])[65:70]
+        this.dist <- unlist(va[[i]][15])[65:71]
         if(max(this.dist) < 0.5){
           multi <- multi + 1
         }else{
@@ -255,9 +256,10 @@ CSMF5 <- function (va, top.aggregate = NULL, InterVA.rule = FALSE, noplot = FALS
         causenames[67] == "Health systems" &&
         causenames[68] == "Inevitable" &&
         causenames[69] == "Knowledge" &&
-        causenames[70] == "Resources") {
-            causeindex <- causeindex[-c(1:3, 65:70)]
-            causenames <- causenames[-c(1:3, 65:70)]
+        causenames[70] == "Resources" &&
+        causenames[71] == "Referral") {
+            causeindex <- causeindex[-c(1:3, 65:71)]
+            causenames <- causenames[-c(1:3, 65:71)]
             include.probAC <- TRUE
     }
 
@@ -286,7 +288,7 @@ CSMF5 <- function (va, top.aggregate = NULL, InterVA.rule = FALSE, noplot = FALS
                 next
             }
             this.dist <- unlist(va[[i]][15])
-            if (include.probAC) this.dist[c(1:3, 65:70)] <- 0
+            if (include.probAC) this.dist[c(1:3, 65:71)] <- 0
             if (sum(this.dist) == 0) {
                 undeter <- undeter + 1
                 next
