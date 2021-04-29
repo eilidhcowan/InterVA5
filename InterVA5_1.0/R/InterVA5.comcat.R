@@ -126,8 +126,8 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
     setwd(directory)
 
     if (is.null(sci)) {
-        data("probbaseV6_1", envir = environment())
-        probbaseV6 <- get("probbaseV6_1", envir = environment())
+        data("probbaseV6", envir = environment())
+        probbaseV6 <- get("probbaseV6", envir = environment())
         probbaseV6 <- as.matrix(probbaseV6)
         probbaseV6Version <- probbaseV6[1,3]
     }
@@ -143,8 +143,8 @@ InterVA5 <- function (Input, HIV, Malaria, write = TRUE, directory = NULL, filen
         probbaseV6Version <- probbaseV6[1,3]
     }
     message("Using Probbase version:  ", probbaseV6Version)
-    data("causetextV5", envir = environment())
-    causetextV5 <- get("causetextV5", envir = environment())
+    data("causetextV6", envir = environment())
+    causetextV6 <- get("causetextV6", envir = environment())
     if (groupcode) {
         causetextV6 <- causetextV6[, -2]
     } else {
